@@ -1,13 +1,14 @@
+import { createSignal } from "solid-js";
 import Counter from "~/components/Counter";
 import "./index.css";
 
 export default function Home() {
-  const [count, counterButton] = <Counter />
+  const [count, setCount] = createSignal(0)
   
   return (
     <main>
-      <h1>Hello 3D world! {count}</h1>
-      {counterButton}
+      <h1>Hello 3D world! {count}</h1><br />
+      <Counter onCount={setCount}/>
       <p>
         Visit{" "}
         <a href="https://solidjs.com" target="_blank">

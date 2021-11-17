@@ -1,13 +1,16 @@
-import { createSignal } from "solid-js";
+import { createEffect, createSignal } from "solid-js";
 import "./Counter.css";
 
-export default function Counter() {
+export default function Counter(props) {
   const [count, setCount] = createSignal(0);
 
-  return [
-    count, 
+  createEffect(() => {
+    if (props.onCount) props.onCount(count())
+  })
+
+  return (
     <button class="increment" onClick={() => setCount(count() + 1)}>
       Clicks: {count}
     </button>
-  ];
+  );
 }
