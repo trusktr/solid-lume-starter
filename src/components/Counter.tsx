@@ -3,9 +3,11 @@ import "./Counter.css";
 
 export default function Counter() {
   const [count, setCount] = createSignal(0);
-  return (
+
+  return [
+    count, 
     <button class="increment" onClick={() => setCount(count() + 1)}>
       Clicks: {count}
     </button>
-  );
+  ];
 }
